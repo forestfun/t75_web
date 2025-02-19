@@ -71,3 +71,63 @@ function redirectToStore() {
         createCustomAlert();
     }
 }
+
+// Initialize after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+    // Lazy load images
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+    images.forEach(img => imageObserver.observe(img));
+
+    // Fade-in animations for sections
+    const fadeInObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition', 'duration-1000', 'opacity-0', 'translate-y-8');
+        fadeInObserver.observe(section);
+    });
+});
+
+// Add smooth scroll behavior
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        if (!this.hasAttribute('onclick')) {  // Don't interfere with store redirects
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Add hover effect to the marquee
+const marqueeContainer = document.querySelector('.overflow-x-hidden');
+if (marqueeContainer) {
+    marqueeContainer.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.animate-marquee, .animate-marquee2').forEach(el => {
+            el.style.animationPlayState = 'paused';
+        });
+    });
+
+    marqueeContainer.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.animate-marquee, .animate-marquee2').forEach(el => {
+            el.style.animationPlayState = 'running';
+        });
+    });
+}
