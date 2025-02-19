@@ -67,12 +67,22 @@
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '100%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { textShadow: '0px 0px 0px rgba(255, 102, 0, 0.5)' },
+                            '100%': { textShadow: '0px 0px 10px rgba(255, 102, 0, 0.5)' }
                         }
                     },
                     animation: {
                         'marquee': 'marquee 25s linear infinite',
                         'marquee2': 'marquee2 25s linear infinite',
-                        'fade-in': 'fadeIn 0.5s ease-out'
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'float': 'float 2s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite'
                     }
                 }
             }
@@ -83,45 +93,49 @@
 
 <body class="bg-black text-white">
     <!-- Navigation -->
-    <nav
+    <nav role="navigation" aria-label="Main navigation"
         class="sticky w-full top-0 z-50 px-6 py-5 flex justify-between items-center border-b border-white/10 backdrop-blur-md bg-black/50">
-        <!-- image: logo.svg -->
-        <div class="h-4">
-            <img src="images/logo.svg" alt="Transform75" class="h-full">
+        <div class="h-4 hover:animate-float transition-all duration-300">
+            <img src="images/logo.svg" alt="Transform75 Logo" class="h-full">
         </div>
         <a href="#start" onclick="redirectToStore(); return false;"
-            class="bg-brand-orange hover:bg-orange-500 text-white font-manrope py-1 md:py-2 px-4 md:px-6 rounded-full transition duration-300 text-md md:text-lg font-bold md:font-extrabold">Join
-            Now</a>
+            class="bg-brand-orange hover:bg-orange-500 text-white font-manrope py-1 md:py-2 px-4 md:px-6 rounded-full transition-all duration-300 text-md md:text-lg font-bold md:font-extrabold hover:scale-105 hover:shadow-lg hover:shadow-brand-orange/20">
+            Join Now
+        </a>
     </nav>
 
     <!-- Hero Section -->
-    <header class="min-h-screen flex items-center justify-center px-4 pt-16 pb-6">
+    <header class="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 pt-16 pb-6">
         <div class="mx-auto md:text-center">
-            <div class="mx-auto md:text-center">
-                <div class="max-w-7xl">
-                    <h1 class="font-bebas text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight mb-4">
-                        UNLEASH YOUR UNBREAKABLE<br>
-                        WILLPOWER IN <p class="text-brand-orange inline-block">75 DAYS</p>
-                    </h1>
-                    <p class="text-gray-300 text-lg md:text-xl mx-auto mb-12 font-manrope opacity-50">
-                        Embark on a life-changing journey that will redefine your limits and transform every aspect of
-                        your life.
-                    </p>
-                </div>
-                <div class="relative h-[70vh] mt-12 rounded-xl overflow-hidden">
-                    <div
-                        class="relative bg-[url('images/hero-bg.jpg')] bg-cover bg-center h-full py-32 px-4 flex items-center justify-center">
-                        <div class="absolute inset-0 bg-black/50"></div>
-                        <div class="relative z-10">
-                            <h2 class="font-bebas text-7xl mb-8">READY TO TRANSFORM?</h2>
-                            <a href="#start" onclick="redirectToStore(); return false;"
-                                class="inline-block bg-brand-orange hover:bg-orange-500 text-white font-bold py-3 md:py-4 px-8 md:px-12 rounded-full text-2xl transition duration-300">
-                                Start Today
-                            </a>
-                        </div>
+            <div class="max-w-7xl">
+                <h1 class="font-bebas text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight mb-4">
+                    UNLEASH YOUR UNBREAKABLE<br>
+                    WILLPOWER IN <span class="text-brand-orange inline-block hover:animate-glow cursor-default">75
+                        DAYS</span>
+                </h1>
+                <p
+                    class="text-gray-300 text-base sm:text-lg md:text-xl mx-auto mb-12 font-manrope opacity-50 max-w-3xl hover:opacity-100 transition-opacity duration-300">
+                    Embark on a life-changing journey that will redefine your limits and transform every aspect of your
+                    life.
+                </p>
+            </div>
+            <div
+                class="relative h-[50vh] sm:h-[60vh] md:h-[70vh] mt-12 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-brand-orange/20 transition-all duration-500">
+                <div
+                    class="relative bg-[url('images/hero-bg.jpg')] bg-cover bg-center h-full py-16 sm:py-24 md:py-32 px-4 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black/50 transition-all duration-500 hover:bg-black/40"></div>
+                    <div class="relative z-10">
+                        <h2 class="font-bebas text-4xl sm:text-5xl md:text-7xl mb-8 hover:animate-glow cursor-default">
+                            READY TO TRANSFORM?</h2>
+                        <a href="#start" onclick="redirectToStore(); return false;"
+                            class="inline-block bg-brand-orange hover:bg-orange-500 text-white font-bold py-3 md:py-4 px-8 md:px-12 rounded-full text-xl sm:text-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-brand-orange/20"
+                            aria-label="Start Your Transformation Today">
+                            Start Today
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
     </header>
 
     <!-- Marquee / "Feeling Stuck" Section -->
@@ -153,20 +167,22 @@
         <p class="text-gray-800 text-5xl md:text-7xl font-bebas max-w-screen-xl mx-auto">
             Career, fitness, and relationships not where you envisioned? It's time to break through barriers and reach
             your full potential with
-            <span class="text-brand-orange">TRANSFORM75</span>.
+            <span class="text-brand-orange inline-block hover:animate-glow cursor-default">TRANSFORM75</span>.
         </p>
     </section>
 
     <!-- Confidence Section -->
     <section>
-        <div class="relative h-[70vh] rounded-xl overflow-hidden max-w-screen-xl mx-auto">
+        <div
+            class="relative h-[70vh] rounded-xl overflow-hidden max-w-screen-xl mx-auto hover:shadow-2xl hover:shadow-brand-orange/20 transition-all duration-500">
             <div
                 class="relative bg-[url('images/second-image.jpg')] bg-cover bg-center h-full py-32 px-4 flex items-center justify-center">
-                <div class="absolute inset-0 bg-black/50"></div>
+                <div class="absolute inset-0 bg-black/50 transition-all duration-500 hover:bg-black/40"></div>
                 <div class="relative z-10 text-center">
-                    <h2 class="font-bebas text-8xl md:text-[12rem] mb-8">CONFIDENCE</h2>
+                    <h2 class="font-bebas text-8xl md:text-[12rem] mb-8 hover:animate-glow cursor-default">CONFIDENCE
+                    </h2>
                     <a href="#start" onclick="redirectToStore(); return false;"
-                        class="inline-block bg-brand-orange hover:bg-orange-500 text-white font-bold py-3 md:py-4 px-8 md:px-12 rounded-full text-2xl transition duration-300">
+                        class="inline-block bg-brand-orange hover:bg-orange-500 text-white font-bold py-3 md:py-4 px-8 md:px-12 rounded-full text-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-brand-orange/20">
                         Start Today
                     </a>
                 </div>
