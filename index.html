@@ -75,6 +75,16 @@
                         glow: {
                             '0%': { textShadow: '0px 0px 0px rgba(255, 102, 0, 0.5)' },
                             '100%': { textShadow: '0px 0px 10px rgba(255, 102, 0, 0.5)' }
+                        },
+                        scrollNumber: {
+                            '0%': { transform: 'translateY(0%)' },
+                            '80%': { transform: 'translateY(-440%)' },
+                            '100%': { transform: 'translateY(-500%)' }
+                        },
+                        scrollNumber2: {
+                            '0%': { transform: 'translateY(0%)' },
+                            '80%': { transform: 'translateY(-340%)' },
+                            '100%': { transform: 'translateY(-400%)' }
                         }
                     },
                     animation: {
@@ -82,7 +92,9 @@
                         'marquee2': 'marquee2 25s linear infinite',
                         'fade-in': 'fadeIn 0.5s ease-out',
                         'float': 'float 2s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite'
+                        'glow': 'glow 2s ease-in-out infinite',
+                        'scroll-number1': 'scrollNumber 2s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+                        'scroll-number2': 'scrollNumber2 2.3s cubic-bezier(0.4, 0, 0.2, 1) forwards'
                     }
                 }
             }
@@ -110,8 +122,24 @@
             <div class="max-w-7xl">
                 <h1 class="font-bebas text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight mb-4">
                     UNLEASH YOUR UNBREAKABLE<br>
-                    WILLPOWER IN <span class="text-brand-orange inline-block hover:animate-glow cursor-default">75
-                        DAYS</span>
+                    WILLPOWER IN
+                    <span class="text-brand-orange inline-flex overflow-hidden">
+                        <span class="inline-flex flex-col animate-scroll-number1 h-[1em]">
+                            <span>0</span>
+                            <span>2</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                        </span><span class="inline-flex flex-col animate-scroll-number2 h-[1em]">
+                            <span>0</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                        </span>
+                        <span class="animate-fade-in" style="animation-delay: 2s"> DAYS</span>
+                    </span>
                 </h1>
                 <p
                     class="text-gray-300 text-base sm:text-lg md:text-xl mx-auto mb-12 font-manrope opacity-50 max-w-3xl hover:opacity-100 transition-opacity duration-300">
