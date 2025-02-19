@@ -1,8 +1,8 @@
 // Store redirection functionality
 function redirectToStore() {
     // URLs for your app on different stores
-    const androidPlayStoreUrl = 'https://play.google.com/store/apps/details?id=YOUR_ANDROID_APP_ID';
-    const iOSAppStoreUrl = 'https://apps.apple.com/app/YOUR_IOS_APP_ID';
+    const androidPlayStoreUrl = 'https://play.google.com/store/apps/details?id=com.transform75.challenge';
+    const iOSAppStoreUrl = 'https://apps.apple.com/app/6741768601';
 
     // Detect the user's device
     const userAgent = navigator.userAgent.toLowerCase();
