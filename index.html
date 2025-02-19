@@ -55,12 +55,17 @@
                     },
                     keyframes: {
                         marquee: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' }
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        },
+                        marquee2: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0%)' }
                         }
                     },
                     animation: {
-                        'marquee': 'marquee 20s linear infinite'
+                        'marquee': 'marquee 25s linear infinite',
+                        'marquee2': 'marquee2 25s linear infinite'
                     }
                 }
             }
@@ -114,17 +119,24 @@
 
     <!-- Marquee / "Feeling Stuck" Section -->
     <section class="py-8 md:py-12 bg-[#F1FF98] text-black overflow-hidden">
-        <div class="relative flex whitespace-nowrap animate-marquee">
-            <div class="flex items-center mx-4 text-2xl font-bold">
-                FEELING STUCK <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" /> FEELING
-                STUCK <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" /> FEELING STUCK
-                <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" /> FEELING STUCK <img
-                    src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+        <div class="relative flex overflow-x-hidden">
+            <!-- First scroll container -->
+            <div class="animate-marquee whitespace-nowrap flex items-center">
+                <span class="mx-4 text-2xl font-bold flex items-center">
+                    TIME TO TRANSFORM <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                    BREAK YOUR LIMITS <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                    UNLEASH YOUR POWER <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                    BE UNSTOPPABLE <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                </span>
             </div>
-            <div class="flex items-center mx-4 text-2xl font-bold">
-                FEELING STUCK <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" /> FEELING
-                STUCK <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" /> FEELING STUCK
-                <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+            <!-- Second scroll container (duplicate for seamless loop) -->
+            <div class="animate-marquee2 whitespace-nowrap flex items-center absolute top-0">
+                <span class="mx-4 text-2xl font-bold flex items-center">
+                    TIME TO TRANSFORM <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                    BREAK YOUR LIMITS <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                    UNLEASH YOUR POWER <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                    BE UNSTOPPABLE <img src="images/sparkle.svg" alt="sparkle" class="inline-block w-8 h-8 mx-4" />
+                </span>
             </div>
         </div>
     </section>
