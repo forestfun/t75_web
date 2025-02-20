@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Transform75 App</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #ff6600;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .message {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="loader"></div>
+        <div class="message">
+            <p id="redirect-text">Getting Transform75 app for you...</p>
+        </div>
+    </div>
+    <script>
+        // Direct store redirection without popup
+        function directRedirect() {
+            const androidPlayStoreUrl = 'https://play.google.com/store/apps/details?id=com.transform75.challenge';
+            const iOSAppStoreUrl = 'https://apps.apple.com/app/6741768601';
+            const websiteUrl = 'https://transform75.com';
+
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isAndroid = /android/.test(userAgent);
+            const isIOS = /ipad|iphone|ipod/.test(userAgent);
+
+            if (isAndroid) {
+                window.location.href = androidPlayStoreUrl;
+            } else if (isIOS) {
+                window.location.href = iOSAppStoreUrl;
+            } else {
+                // For desktop users, show a message and link to main site
+                document.getElementById('redirect-text').innerHTML =
+                    'Transform75 is a mobile app. Please visit our website on your phone to download, or visit our <a href="' +
+                    websiteUrl +
+                    '" style="color: #ff6600; text-decoration: underline;">main website</a>.';
+            }
+        }
+
+        // Redirect immediately
+        directRedirect();
+    </script>
+</body>
+
+</html>
